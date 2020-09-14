@@ -6,8 +6,22 @@
     <title>Snake Leader</title>
 </head>
 <body>
-    <h1 style="text-align: center;">
-        <font face="Calibri">Snake Leader</font>
-    </h1>
+    <form method="POST" th:object="${userResult}">
+        <h1 style="text-align: center;">
+            <font face="Calibri">Snake Leader</font>
+        </h1>
+        <br/>
+        <h3>Check</h3>
+        <label for="id">ID: </label>
+        <input type="text" th:field="*{id}"/>
+        <br/>
+        <label for="UserName">Name: </label>
+        <input type="text" th:field="*{UserName}"/>
+        <br/>
+        <label for="UserScore">Score: </label>
+        <input type="text" th:field="*{UserScore}"/>
+        <br/>
+        <input type="submit" value="Submit result"/>
+    </form>
 </body>
 </html>

@@ -12,6 +12,7 @@ public class ResultTableController {
 
     @GetMapping
     public String showGame(Model model) {
+
         return "home";
     }
 

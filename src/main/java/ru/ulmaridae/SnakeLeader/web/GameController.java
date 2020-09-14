@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.ulmaridae.SnakeLeader.UserResult;
 import ru.ulmaridae.SnakeLeader.data.ResultRepository;
 
-import java.util.Date;
-
 @Slf4j
 @Controller
 @RequestMapping("/")
@@ -26,16 +24,15 @@ public class GameController {
 
     @GetMapping
     public String showGame(Model model) {
-
+        model.addAttribute("userResult", new UserResult());
         return "home";
     }
 
     @PostMapping
-    public String postUserResults (UserResult userResults, Model model) {
-        // здесь кладем информацию об игре + дату в репозиторий
-        userResults.setDate(new Date());
-        resultRepository.save(userResults);
-        model.addAttribute("Percentage", resultRepository.getPercent(userResults.getUserScore()));
+    public String postUserResults (UserResult userResult, Model model) {
+        resultRepository.save(userResult);
+        log.info("new result: " + userResult);
+        model.addAttribute("percentage", resultRepository.getPercent(userResult.getUserScore()));
         return "home"; // возвращаем пользователю информацию о том, какое место он занял (в процентах)
     }
 }

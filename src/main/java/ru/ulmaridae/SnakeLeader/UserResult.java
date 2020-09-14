@@ -9,7 +9,7 @@ public class UserResult {
 
     private long id;
 
-    private String UserName = "AAA";
+    private String UserName;
 
     private long UserScore;
 
